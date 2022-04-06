@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Final Project: Analysis of Digital Advertising"
+author: "Yiqin Shi, Yuxuan Liang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---

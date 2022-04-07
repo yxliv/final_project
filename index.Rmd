@@ -7,4 +7,4 @@ site: bookdown::bookdown_site
 
 # Introduction
 
-To start our project, 
+To start our project, we will first blah blah

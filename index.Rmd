@@ -1,6 +1,6 @@
 --- 
-title: "Final Project"
-author: "Yuxuan Liang and Yiqin Shi"
+title: "Final Project: Analysis of Digital Advertising"
+author: "Yiqin Shi, Yuxuan Liang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---

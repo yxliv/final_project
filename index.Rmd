@@ -1,6 +1,6 @@
 --- 
 title: "Final Project"
-author: "Yuxuan Liang"
+author: "Yuxuan Liang and Yiqin Shi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---

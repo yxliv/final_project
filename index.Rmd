@@ -7,4 +7,22 @@ site: bookdown::bookdown_site
 
 # Introduction
 
-To start our project, we will first blah blah
+The digital advertising start in the year 1994 when first online banner ad by AT&T appeared on Hotwired magazine with a run time of three months for a price of $30,000. This ad produced click-through rates of 44%. Ever since, digital advertising became popular and advertisers have been through many upheavals and needed to adopt to constantly changing technological revolutions and consumer trends. 
+
+![](first ad.gif)
+
+In this project, we are intended to make a comparison among UK, US and China on their digital advertising in digital markets. We chose these countries because we believe they are the representative of European, American and Asian countries. Through this comparison, we would like to have a glimpse on the digital markets in three continents.
+
+We proposed three research questions and hope to find the answers through the data visualization process.
+
+1. How does the proportion of different advertising market in the three countries differ from 2017-2026? How does the present data and projected data differ in three countries? How does users age, gender, income affect the proportion? 
+
+2. Compare the average ad spending per Internet user from 2017 to 2021 and the projected average ad spending per Internet user from 2022 to 2026 in different advertising markets in three countries, which segment will the market spending most in and why may be the reason behind?
+
+3. Focusing on social media advertising market, how does popular social network differ in three countries and how does social network users change from 2017 to 2026?
+
+In the next sections, we will present our process of answering those questions.
+
+
+
+

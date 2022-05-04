@@ -100,7 +100,91 @@
             <section class="normal" id="section-">
 <div id="data-sources" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Data sources<a href="data-sources.html#data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We collected our data from <strong>Statista</strong>, a German company specializing in market and consumer data. The specific dataset is from its digital market outlook - digital advertising section.</p>
+<p>The link is provided here:
+<a href="https://www.statista.com/outlook/dmo/digital-advertising/worldwide">link</a></p>
+<p>We selected United States, United Kingdom and China as our observation units and respectively downloaded the dataset.</p>
+<p>Datasets are present as following:</p>
+<pre><code>## # A tibble: 6 × 16
+##   Region Market      Chart Name  Unit  Source `2017` `2018` `2019` `2020` `2021`
+##   &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 China  Banner Adv… Ad S… Total mill… Stati… 15853. 2.19e4 2.92e4 3.47e4 4.07e4
+## 2 China  Banner Adv… Ad S… Bann… mill… Stati…  6060. 7.10e3 8.07e3 8.67e3 9.24e3
+## 3 China  Banner Adv… Ad S… Bann… mill… Stati…  9793. 1.48e4 2.11e4 2.61e4 3.15e4
+## 4 China  Banner Adv… Ad S… Total perc… Stati…    NA  3.79e1 3.34e1 1.91e1 1.72e1
+## 5 China  Banner Adv… Ad S… Bann… perc… Stati…    NA  1.72e1 1.36e1 7.43e0 6.58e0
+## 6 China  Banner Adv… Ad S… Bann… perc… Stati…    NA  5.07e1 4.29e1 2.35e1 2.08e1
+## # … with 5 more variables: `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;,
+## #   `2025` &lt;dbl&gt;, `2026` &lt;dbl&gt;</code></pre>
+<pre><code>## # A tibble: 6 × 16
+##   Region      Market Chart Name  Unit  Source `2017` `2018` `2019` `2020` `2021`
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 United Sta… Banne… Ad S… Total mill… Stati… 36380. 4.45e4 5.28e4 6.25e4 6.88e4
+## 2 United Sta… Banne… Ad S… Bann… mill… Stati… 16213. 1.76e4 1.83e4 1.93e4 2.00e4
+## 3 United Sta… Banne… Ad S… Bann… mill… Stati… 20167. 2.70e4 3.45e4 4.31e4 4.88e4
+## 4 United Sta… Banne… Ad S… Total perc… Stati…    NA  2.24e1 1.87e1 1.82e1 1.01e1
+## 5 United Sta… Banne… Ad S… Bann… perc… Stati…    NA  8.37e0 4.27e0 5.52e0 3.50e0
+## 6 United Sta… Banne… Ad S… Bann… perc… Stati…    NA  3.37e1 2.81e1 2.49e1 1.31e1
+## # … with 5 more variables: `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;,
+## #   `2025` &lt;dbl&gt;, `2026` &lt;dbl&gt;</code></pre>
+<pre><code>## # A tibble: 6 × 16
+##   Region      Market Chart Name  Unit  Source `2017` `2018` `2019` `2020` `2021`
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 United Sta… Banne… Ad S… Total mill… Stati… 36380. 4.45e4 5.28e4 6.25e4 6.88e4
+## 2 United Sta… Banne… Ad S… Bann… mill… Stati… 16213. 1.76e4 1.83e4 1.93e4 2.00e4
+## 3 United Sta… Banne… Ad S… Bann… mill… Stati… 20167. 2.70e4 3.45e4 4.31e4 4.88e4
+## 4 United Sta… Banne… Ad S… Total perc… Stati…    NA  2.24e1 1.87e1 1.82e1 1.01e1
+## 5 United Sta… Banne… Ad S… Bann… perc… Stati…    NA  8.37e0 4.27e0 5.52e0 3.50e0
+## 6 United Sta… Banne… Ad S… Bann… perc… Stati…    NA  3.37e1 2.81e1 2.49e1 1.31e1
+## # … with 5 more variables: `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;,
+## #   `2025` &lt;dbl&gt;, `2026` &lt;dbl&gt;</code></pre>
+<p>Each dataset has 16 columns: Region, Market, Chart, Name, Unit, Source and Years (2017-2026). The first five columns are filled with character data, and Years columns are filled with values which are all numeric data.</p>
+<div id="region" class="section level5 hasAnchor" number="2.0.0.0.1">
+<h5><span class="header-section-number">2.0.0.0.1</span> Region<a href="data-sources.html#region" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>It is a column filled with region. Each dataset has one region, so it does not help much when we research in one country. But it will be helpful when we combine datasets to do the comparison.</p>
+</div>
+<div id="market" class="section level5 hasAnchor" number="2.0.0.0.2">
+<h5><span class="header-section-number">2.0.0.0.2</span> Market<a href="data-sources.html#market" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<pre><code>## [1] &quot;Banner Advertising&quot;       &quot;Social Media Advertising&quot;
+## [3] &quot;Digital Advertising&quot;      &quot;Search Advertising&quot;      
+## [5] &quot;Classifieds&quot;              &quot;Video Advertising&quot;</code></pre>
+<p>There are six factors inside this column, but we only have five markets inside “Digital Advertising”: “Banner”, “Social Media”, “Search”, “Classifieds”, and “Video”.</p>
+</div>
+<div id="chart" class="section level5 hasAnchor" number="2.0.0.0.3">
+<h5><span class="header-section-number">2.0.0.0.3</span> Chart<a href="data-sources.html#chart" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<pre><code>##  [1] &quot;Ad Spending&quot;                                     
+##  [2] &quot;Ad Spending Growth&quot;                              
+##  [3] &quot;Average Ad Spending per Internet User&quot;           
+##  [4] &quot;Users by Age&quot;                                    
+##  [5] &quot;Users by Gender&quot;                                 
+##  [6] &quot;Users by Income&quot;                                 
+##  [7] &quot;Usage Shares&quot;                                    
+##  [8] &quot;Top Company Revenues (Worldwide &amp; Consolidated)&quot; 
+##  [9] &quot;Reach by social network&quot;                         
+## [10] &quot;Ad Spending by Segment&quot;                          
+## [11] &quot;Ad Spending Growth by Segment&quot;                   
+## [12] &quot;Ad Spending Share Desktop &amp; Mobile&quot;              
+## [13] &quot;Ad Spending Growth Desktop &amp; Mobile&quot;             
+## [14] &quot;Ad Spending Share by Industry&quot;                   
+## [15] &quot;Ad Spending Share (Non-)Programmatic&quot;            
+## [16] &quot;Ad Spending Growth (Non-)Programmatic&quot;           
+## [17] &quot;Average Ad Spending per Internet User by Segment&quot;
+## [18] &quot;Ad Spending Social Media&quot;                        
+## [19] &quot;Ad Spending Change&quot;                              
+## [20] &quot;Share from Digital&quot;</code></pre>
+<p>This column contains different charts we would use for further analysis. Mainly, we would look at Ad Spending, Users, and Reach by Social Network charts.</p>
+</div>
+<div id="name" class="section level5 hasAnchor" number="2.0.0.0.4">
+<h5><span class="header-section-number">2.0.0.0.4</span> Name<a href="data-sources.html#name" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>This column contains different Names of Charts. We will not present them here because the dataset has not been transformed to tidy version.</p>
+</div>
+<div id="unit-source-year" class="section level5 hasAnchor" number="2.0.0.0.5">
+<h5><span class="header-section-number">2.0.0.0.5</span> Unit, Source, Year<a href="data-sources.html#unit-source-year" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Those columns are obvious, so we will not talk about them in detail here.</p>
+<hr />
+<p>Briefly, we noticed that this dataset is not in tidy format and have several NAs. We will clean the dataset in the next sections.</p>
 
+</div>
 </div>
             </section>
 

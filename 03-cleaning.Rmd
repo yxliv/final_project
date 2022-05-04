@@ -1,1 +1,35 @@
 # Data transformation
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+china.orginal <- read_csv("dmo_digital-advertising_usd_china_en_2022-03-03_18-16-31.csv")
+us.original <- read_csv("dmo_digital-advertising_usd_united states_en_2022-03-03_18-15-03.csv")
+uk.original <- read_csv("dmo_digital-advertising_usd_united kingdom_en_2022-03-03_18-10-30.csv")
+```
+
+Since the datasets are not in the tidy version, we need to transform it.
+Basically, we use the *pivot_longer* function to transform the multiple Years column to a single column.
+
+The tidy datasets are presented below:
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+us <- us.original %>% select(-c("Source"))
+china <- china.orginal %>% select(-c("Source"))
+uk <- uk.original %>% select(-c("Source"))
+
+us <- us %>% pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+china <- china%>%pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+uk <- uk%>%pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+
+head(china)
+head(us)
+head(uk)
+```
+
+We download the tidy dataset using *write.csv* function and will use this version of dataset in our further analysis.
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+write.csv(china, file = "china.csv")
+write.csv(uk, file = "uk.csv")
+write.csv(us, file = "us.csv")
+```
+
+

@@ -100,6 +100,37 @@
             <section class="normal" id="section-">
 <div id="data-transformation" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Data transformation<a href="data-transformation.html#data-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Since the datasets are not in the tidy version, we need to transform it.
+Basically, we use the <em>pivot_longer</em> function to transform the multiple Years column to a single column.</p>
+<p>The tidy datasets are presented below:</p>
+<pre><code>## # A tibble: 6 × 7
+##   Region Market             Chart       Name  Unit              Year   Value
+##   &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;  &lt;dbl&gt;
+## 1 China  Banner Advertising Ad Spending Total million USD (US$) 2017  15853.
+## 2 China  Banner Advertising Ad Spending Total million USD (US$) 2018  21860.
+## 3 China  Banner Advertising Ad Spending Total million USD (US$) 2019  29159.
+## 4 China  Banner Advertising Ad Spending Total million USD (US$) 2020  34718.
+## 5 China  Banner Advertising Ad Spending Total million USD (US$) 2021  40696.
+## 6 China  Banner Advertising Ad Spending Total million USD (US$) 2022  45212.</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##   Region        Market             Chart       Name  Unit           Year   Value
+##   &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;  &lt;dbl&gt;
+## 1 United States Banner Advertising Ad Spending Total million USD (… 2017  36380.
+## 2 United States Banner Advertising Ad Spending Total million USD (… 2018  44526.
+## 3 United States Banner Advertising Ad Spending Total million USD (… 2019  52841.
+## 4 United States Banner Advertising Ad Spending Total million USD (… 2020  62452.
+## 5 United States Banner Advertising Ad Spending Total million USD (… 2021  68783.
+## 6 United States Banner Advertising Ad Spending Total million USD (… 2022  73597.</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##   Region         Market                   Chart       Name  Unit     Year  Value
+##   &lt;chr&gt;          &lt;chr&gt;                    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;
+## 1 United Kingdom Social Media Advertising Ad Spending Total million… 2017  3303.
+## 2 United Kingdom Social Media Advertising Ad Spending Total million… 2018  4549.
+## 3 United Kingdom Social Media Advertising Ad Spending Total million… 2019  5521.
+## 4 United Kingdom Social Media Advertising Ad Spending Total million… 2020  6726.
+## 5 United Kingdom Social Media Advertising Ad Spending Total million… 2021  8255.
+## 6 United Kingdom Social Media Advertising Ad Spending Total million… 2022  9393.</code></pre>
+<p>We download the tidy dataset using <em>write.csv</em> function and will use this version of dataset in our further analysis.</p>
 
 </div>
             </section>

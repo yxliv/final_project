@@ -1,3 +1,171 @@
+--- 
+title: "Final Project: Analysis of Digital Advertising"
+author: "Yiqin Shi, Yuxuan Liang"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+# Introduction
+
+The digital advertising start in the year 1994 when first online banner ad by AT&T appeared on Hotwired magazine with a run time of three months for a price of $30,000. This ad produced click-through rates of 44%. Ever since, digital advertising became popular and advertisers have been through many upheavals and needed to adopt to constantly changing technological revolutions and consumer trends. 
+
+![](first ad.gif)
+
+In this project, we are intended to make a comparison among UK, US and China on their digital advertising in digital markets. We chose these countries because we believe they are the representative of European, American and Asian countries. Through this comparison, we would like to have a glimpse on the digital markets in three continents.
+
+We proposed three research questions and hope to find the answers through the data visualization process.
+
+1. How does the proportion of different advertising market in the three countries differ from 2017-2026? How does the present data and projected data differ in three countries? How does users age, gender, income affect the proportion? 
+
+2. Compare the average ad spending per Internet user from 2017 to 2021 and the projected average ad spending per Internet user from 2022 to 2026 in different advertising markets in three countries, which segment will the market spending most in and why may be the reason behind?
+
+3. Focusing on social media advertising market, how does popular social network differ in three countries and how does social network users change from 2017 to 2026?
+
+In the next sections, we will present our process of answering those questions.
+
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Data sources
+
+We collected our data from **Statista**, a German company specializing in market and consumer data. The specific dataset is from its digital market outlook - digital advertising section.
+
+The link is provided here:
+[link](https://www.statista.com/outlook/dmo/digital-advertising/worldwide)
+
+We selected United States, United Kingdom and China as our observation units and respectively downloaded the dataset.
+
+Datasets are present as following:
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+china.orginal <- read_csv("dmo_digital-advertising_usd_china_en_2022-03-03_18-16-31.csv")
+us.original <- read_csv("dmo_digital-advertising_usd_united states_en_2022-03-03_18-15-03.csv")
+uk.original <- read_csv("dmo_digital-advertising_usd_united kingdom_en_2022-03-03_18-10-30.csv")
+head(china.orginal)
+head(us.original)
+head(us.original)
+```
+
+Each dataset has 16 columns: Region, Market, Chart, Name, Unit, Source and Years (2017-2026). The first five columns are filled with character data, and Years columns are filled with values which are all numeric data.
+
+##### Region
+It is a column filled with region. Each dataset has one region, so it does not help much when we research in one country. But it will be helpful when we combine datasets to do the comparison. 
+
+##### Market
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+unique(china.orginal$Market)
+```
+There are six factors inside this column, but we only have five markets inside "Digital Advertising": "Banner", "Social Media", "Search", "Classifieds", and "Video". 
+
+##### Chart
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+unique(china.orginal$Chart)
+```
+This column contains different charts we would use for further analysis. Mainly, we would look at Ad Spending, Users, and Reach by Social Network charts.
+
+##### Name
+This column contains different Names of Charts. We will not present them here because the dataset has not been transformed to tidy version.
+
+##### Unit, Source, Year
+Those columns are obvious, so we will not talk about them in detail here.
+
+***
+
+Briefly, we noticed that this dataset is not in tidy format and have several NAs. We will clean the dataset in the next sections.
+
+<!--chapter:end:02-data.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Data transformation
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyverse)
+china.orginal <- read_csv("dmo_digital-advertising_usd_china_en_2022-03-03_18-16-31.csv")
+us.original <- read_csv("dmo_digital-advertising_usd_united states_en_2022-03-03_18-15-03.csv")
+uk.original <- read_csv("dmo_digital-advertising_usd_united kingdom_en_2022-03-03_18-10-30.csv")
+```
+
+Since the datasets are not in the tidy version, we need to transform it.
+Basically, we use the *pivot_longer* function to transform the multiple Years column to a single column.
+
+The tidy datasets are presented below:
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+us <- us.original %>% select(-c("Source"))
+china <- china.orginal %>% select(-c("Source"))
+uk <- uk.original %>% select(-c("Source"))
+
+us <- us %>% pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+china <- china%>%pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+uk <- uk%>%pivot_longer(col=!c(Region, Market, Chart, Name, Unit), names_to="Year", values_to="Value")
+
+head(china)
+head(us)
+head(uk)
+```
+
+We download the tidy dataset using *write.csv* function and will use this version of dataset in our further analysis.
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+write.csv(china, file = "china.csv")
+write.csv(uk, file = "uk.csv")
+write.csv(us, file = "us.csv")
+```
+
+
+
+<!--chapter:end:03-cleaning.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Missing values
+
+<!--chapter:end:04-missing.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Results
+
+<!--chapter:end:05-results.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
 # Interactive component
 
 
@@ -404,4 +572,19 @@ UK and US have similar situation on social network.Facebook has the most users a
 
 
 
+
+
+<!--chapter:end:06-interactive.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+# Conclusion
+
+
+<!--chapter:end:07-conclusion.Rmd-->
 

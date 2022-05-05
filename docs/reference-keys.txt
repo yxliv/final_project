@@ -8,5 +8,8 @@ unit-source-year
 data-transformation
 missing-values
 results
+research-question-1
+research-question-2
+social-media-advertising
 interactive-component
 conclusion

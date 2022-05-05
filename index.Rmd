@@ -19,7 +19,7 @@ We proposed three research questions and hope to find the answers through the da
 
 2. An analysis the ad spending in different countries and in different markets. Which market has the highest return on investment ratio? Compare the average ad spending per Internet user as well as the ad spending growth rate from 2017 to 2021 and the projected ones from 2022 to 2026 in different advertising markets in three countries, which segment will the market spending most in and why may be the reason behind?
 
-3. Focusing on social media advertising market, how does popular social network differ in three countries and how does social network users change from 2017 to 2026?
+3. Focusing on social media advertising market, how does popular social network differ in three countries and how does social network users demographic differ in three countries?
 
 In the next sections, we will present our process of answering those questions.
 

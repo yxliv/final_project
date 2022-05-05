@@ -13,7 +13,6 @@ library(scales)
 library(waffle)
 library(treemapify)
 library(highcharter)
-library(rCharts)
 library(knitr)
 ```
 
@@ -24,7 +23,7 @@ uk <- read_csv("uk.csv") %>% select(c(2:8))
 us <- read_csv("us.csv") %>% select(c(2:8))
 ```
 
-In this Section, we will dig into the Social Media Advertising. As an interactive digital channel that facilitate the creation and sharing of information, ideas, and interests, social media had over 3.6 billion users in 2020 worldwide. Obviously, digital advertising will focus on social media market. China, US and UK have spent a total of 110062.6 million USD on Social Media Advertising 2021 alone. And in those countries, this spending is continuously increasing. 
+
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 china.users <- china %>% filter(Market == "Social Media Advertising", Chart %in% c("Users by Age", "Users by Gender", "Users by Income"), Year == 2021) %>% select(1,3,4,7)
@@ -36,57 +35,12 @@ uk.users <- uk %>% filter(Market == "Social Media Advertising", Chart %in% c("Us
 users <- rbind(china.users, us.users, uk.users) %>% pivot_wider(names_from = Region, values_from = Value)
 ```
 
-We first look at the demographics of social media. We could see a culture difference in it. In three countries, the largest part of users are in 25-34 years. However, in US and UK, smallest part of users are in 18-24 years, but in China, it is 55-64 years. Also, in China, there are more male users but in UK and US shows the opposite. When we check by Income levels, it is more interesting that China has more medium income users, US has more low income users, and UK has more high income users.
-```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
-users %>%
-  gt() %>%
-  tab_header(
-    title = md("**Demographics**"),
-    subtitle = "unit in %"
-  ) %>%
-  cols_align(
-  align ="left",
-  columns = c(1,2)
-) %>%
-  tab_style(
-    style = list(
-      cell_borders(
-        sides = c("bottom"),
-        color = "black",
-        weight = px(1)
-      ),
-      cell_borders(
-        sides = c("bottom"),
-        color = "black",
-        weight = px(1)
-      )),
-    locations = list(
-      cells_body(
-        columns = 1:5,
-        rows = 5
-      ),
-      cells_body(
-        columns = 1:5,
-        rows = 7
-      )
-    )
-    )
 
-```
-
-
-Next, we take a brief look at the Ad spending in Social Media market by Year and Country. Clearly, three countries increase their spending year by year. Compared to US and China, UK spend relatively smaller amoun of money in Ad spending in Social Media Market. 
-```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE, results = 'asis', comment = NA}
 ad.spending <- rbind(china,us,uk) %>% filter(Market == "Social Media Advertising", Chart == "Ad Spending", Name == "Total") %>% select(1,6,7)
-nPlot(Value ~ Year, 
-            group = 'Region', 
-            data = ad.spending, 
-            type = 'multiBarChart'
-)
 ```
 
-
-In order to understand the benefits of Social Media Advertising, it is important to understand the mechanics of social media networks. We decide to look into the social network reach in China, US and UK. Social network reach refers to the number of users who have come across a particular content on a social platform.
+In order to understand the benefits of Social Media Advertising, it is important to understand the mechanics of social media networks. We decide to look into the social network reach in China, US and UK in this section. Social network reach refers to the number of users who have come across a particular content on a social platform.
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 china.reach <- china %>% 
@@ -211,7 +165,7 @@ tab_style(
   my_theme()
 ```
 
-From the table, we could see that China has the largest number social media users and Uk has the least. The huge difference could be led by the population difference. Since "Total" here is the sum of all social network users, there is repeated calculation. We decide to use the distinct counting of total reach (from the dataset) and calculate the ratio of average users and population.
+From the table, we could see that China has the largest number of social media users and the Uk has the least. The huge difference could be led by the population difference. Since "Total" here is the sum of all social network users, there is repeated calculation. We decide to use the distinct counting of total reach (from the dataset) and calculate the ratio of average users and population.
 
 |Region  |Average Users |Ratio
 |:------ |:------       |:------
@@ -219,12 +173,11 @@ From the table, we could see that China has the largest number social media user
 |US      |295.7239      |0.893
 |UK      |59.801        |0.881
 
-Now it is clear that US has the largest number of users and China have the least when taking population into account.
+Now it is clear that the US has the largest number of users and China have the least when taking population into account.
 
-From the Reach by Network table, the popular social media platforms varies from country to country. Especially in China, the top 5 social networks are totally different from those in US and UK. We believe that the reason behind is the blockage of several social medias in China. The only 2 social networks not banned in US and UK top 5 are LinkedIn and TikTok. The top 5 social networks in China are all Chinese companies.
+From the Reach by Network table, the popular social media platforms vary from country to country. Especially in China, the top 5 social networks are different from those in US and UK. We believe that the reason behind this is the blockage of several social media in China. The only 2 social networks not banned in US and UK top 5 are LinkedIn and TikTok. The top 5 social networks in China are all Chinese companies.
 
-Another thing worth noting is that, though people in different countries are using different social medias, the ratio of each social network users and total users are similar for the same ranking. For example, the ratio of most popular social network are around 25% in three countries.
-
+Another thing worth noting is that, though people in different countries are using different social media, the ratio of each social network user and total users are similar for the same ranking. For example, the ratio of the most popular social network is around 25% in the three countries.
 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
@@ -234,8 +187,9 @@ china.reach.avg.top7 <- china.reach.avg %>%
           `Average Users` = sum(.$`Average Users`[9:19])) %>% 
   slice(-(9:19)) %>% 
   slice(-1)
-
-china.reach.avg.top7 %>% 
+```
+```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+h1 <- china.reach.avg.top7 %>% 
   hchart(
     "treemap", 
     hcaes(x = Name, value = `Average Users`, color = `Average Users`)
@@ -246,7 +200,10 @@ china.reach.avg.top7 %>%
     align = "left",
     style = list(color = "#6da9df", useHTML = TRUE)
   )
+h1
 ```
+
+
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 china.reach.order <- china.reach %>% 
@@ -268,7 +225,7 @@ df.china.reach.order <- china.reach.order %>%
 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
-reactable(
+r1 <- reactable(
   df.china.reach.order,
   columns = list(
     `Social Network` = colDef(maxWidth = 200),
@@ -285,7 +242,10 @@ reactable(
 )
 ```
 
-Now we will dig into each country. In China, the most frequent social network is WeChat from Tencent and is the only instant messaging app in the top 7. We can see that the growth rate of Wechat users are stable. Qzone, on the other hand, has a continuously negative growth rate. The users are decreasing from 2019 and is projected to be continuously decreasing in the future. Qzone is also the product of Tencent and is earlier than WeChat. Unlike WeChat, Qzone is a pure social networking platform that users could write blogs on it. However, this feature alone is not attractive enough to keep users. Another worth noting point is that LinkedIn is projected to have a dramatic decrease of users from 2021 to 2022. LinkedIn China announced that it would shut down localized version of LinkedIn and launch a new InJobs App focusing on helping China-based professionals find jobs in China in 2021. And this announcement and action clearly lead to the dramatic decrease of users.
+```{r echo = FALSE}
+r1
+```
+Now we will dig into each country. In China, the most frequent social network is WeChat from Tencent which is the only instant messaging app in the top 7. We can see that the growth rate of Wechat users is stable. Qzone, on the other hand, has a continuously negative growth rate. The users are decreasing since 2019 and are projected to be continuously decreasing in the future. Qzone is also the product of Tencent and is earlier than WeChat. Unlike WeChat, Qzone is a pure social networking platform where users could write blogs on it. However, this feature alone is not attractive enough to keep users. Another worth noting point is that LinkedIn is projected to have a dramatic decrease in users from 2021 to 2022. LinkedIn China announced that it would shut down the localized version of LinkedIn and launch a new InJobs App focusing on helping China-based professionals find jobs in China in 2021. And this announcement and action lead to a dramatic decrease in users.
 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
@@ -297,7 +257,7 @@ us.reach.avg.top7 <- us.reach.avg %>%
   slice(-1)
 
 
-us.reach.avg.top7 %>% 
+h2 <- us.reach.avg.top7 %>% 
   hchart(
     "treemap", 
     hcaes(x = Name, value = `Average Users`, color = `Average Users`)
@@ -310,6 +270,9 @@ us.reach.avg.top7 %>%
   )
 ```
 
+```{r echo = FALSE}
+h2
+```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 us.reach.order <- us.reach %>% 
@@ -329,7 +292,7 @@ df.us.reach.order <- us.reach.order %>%
   arrange(Order) %>% 
   select(1,3)
 
-reactable(
+r2 <- reactable(
   df.us.reach.order,
   columns = list(
     `Social Network` = colDef(maxWidth = 200),
@@ -343,7 +306,9 @@ reactable(
 )
 ```
 
-
+```{r echo=FALSE}
+r2
+```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 uk.reach.avg.top7 <- uk.reach.avg %>% 
@@ -353,7 +318,7 @@ uk.reach.avg.top7 <- uk.reach.avg %>%
   slice(-(9:19)) %>% 
   slice(-1)
 
-uk.reach.avg.top7 %>% 
+h3 <- uk.reach.avg.top7 %>% 
   hchart(
     "treemap", 
     hcaes(x = Name, value = `Average Users`, color = `Average Users`)
@@ -364,6 +329,10 @@ uk.reach.avg.top7 %>%
     align = "left",
     style = list(color = "#6da9df", useHTML = TRUE)
   )
+```
+
+```{r echo = FALSE}
+h3
 ```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
@@ -385,7 +354,7 @@ df.uk.reach.order <- uk.reach.order %>%
   select(1,3)
 
 
-reactable(
+r3 <- reactable(
   df.uk.reach.order,
   columns = list(
     `Social Network` = colDef(maxWidth = 200),
@@ -399,7 +368,15 @@ reactable(
 )
 ```
 
-UK and US have similar situation on social network.Facebook has the most users and keeps a stable growth rate. Pinterest, though ranking six in both couuntry, has a decreasing growth rate in US but a stable growth rate in UK. Twitter has a very unstable growth rate in recent years in US. But the data provider Statista has a positive view on Twitter's user growth rate in the future. The user growth rate of Tumblr is worth noting. Similar to Qzone in China, Tumblr faced a massive drop of users from 2018 to 2019 and continuous to drop till now in both countries. In December of 2018, Tumblr announced a new ban on “adult content", and this action resulted to the dramatic drop of users.
+```{r echo=FALSE}
+r3
+```
+
+UK and US have a similar situation on the social network. Facebook has the most users and keeps a stable growth rate. Pinterest, though ranking six in both countries, has a decreasing growth rate in the US but a stable growth rate in the UK. Twitter has had a very unstable growth rate in recent years in the US. But the data provider Statista has a positive view of Twitter's user growth rate in the future. The user growth rate of Tumblr is worth noting. Similar to Qzone in China, Tumblr faced a massive drop in users from 2018 to 2019 and continues to drop till now in both countries. In December of 2018, Tumblr announced a new ban on “adult content", and this action resulted in a dramatic drop in users.
+
+**Conclusion**
+Billions of people around the world use social media to share information and make connections, and thus the social media advertising market is becoming stronger. The Social Network market in China is very different from US and UK. And it might lead to the reason why China is spending mostly on social media advertising but US and UK are not.
+
 
 
 

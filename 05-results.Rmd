@@ -1,5 +1,6 @@
 # Results
 
+In this section, we will analysis the digital advertising market and provide our findings. 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(ggthemes)
@@ -24,6 +25,9 @@ df <- rbind(us,uk,china)
 ```
 
 ### Research Question 1:
+
+Firstly, we look at the Average Ad spending and how it is divided into desktop and mobile. 
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(webr)
 library(tidyverse)
@@ -52,10 +56,12 @@ dfy<-dfw%>%group_by(Market,Name)%>%
   select(-c(Year,Total))
 PieDonut(dfy,aes(Market,Name,count=mean_f),title="Average Ad Spending for the Future (2022-2026)")
 ```
+
 Since Classifieds(including General, Jobs, Motor, Real Estate) represents only a small portion of the overall Ad spending across all digital advertising marketplace, we only include the four major markets: Video, Banner, Social Media, and Search Advertising. We separately plot the donut charts for the past(2017-2021) and the future(predicted value for 2022-2026). For both of them, we calculated the average ad spending over 5 years and present it as the percentage in donut charts.
 
-By the comparison between the donut chart of the past and the future, it is clear that the mobile section of Ad spending is increasing in all four markets. In particular, in Video Advertising, mobile will increase its share of AD spending by nearly 20%. Mobile AD spending in the banner and search AD markets will also increase by more than 10%. Social media advertising had the lowest growth rate, at about 5 percent, which makes sense given that mobile advertising already accounts for more than 80 percent of AD spending. 
+Search and Banner Advertising market currently dominates the digital market; In terms of forecasts, Social Media and Video Advertising spending will increase and each four major markets will become more even across the whole digital market, while Search Advertising market remains the leading spender and Video Advertising market is the lowest. 
 
+By the comparison between the donut chart of the past and the future, it is clear that the mobile section of Ad spending is increasing in all four markets. In particular, in Video Advertising, mobile will increase its share of AD spending by nearly 20%. Mobile AD spending in the banner and search AD markets will also increase by more than 10%. Social media advertising had the lowest growth rate, at about 5 percent, which makes sense given that mobile advertising already accounts for more than 80 percent of AD spending. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 dfa <- dfx%>%group_by(Region,Market,Name,Year)%>%
@@ -97,11 +103,14 @@ ggplot(dfc, aes(y = mean_p, axis1 = fct_relevel(Region,"China",after=1), axis2 =
   guides(fill = FALSE) +
   theme_classic()
 ```
-The alluvial diagrams are also seprately plotted by the timeline(the past and the future). The alluviums are colored by Desktop and Mobile. The difference between the alluvial diagrams and donut charts is that we can take a closer look at the change in the proportion of mobile and desktop sections in different countries. As we can see, the overall proportion of the mobile section increases a lot. From countries' sides, all three countries will increase their mobile AD spending in all four markets. More specifically, by seeing the change in width of alluviums of the mobile section, UK will increase its mobile Ad spending most in Video Advertising market; China will increase its mobile Ad spending most in Social Media Advertising market; US will increase its mobile Ad spending most in Video Advertising market. 
+
+The alluvial diagrams are also separately plotted by the timeline(the past and the future). The alluviums are colored by Desktop and Mobile. The difference between the alluvial diagrams and donut charts is that we can take a closer look at the change in the proportion of mobile and desktop sections in different countries. As we can see, the overall proportion of the mobile section will increase a lot from the past to the future. From countries' sides, all three countries will increase their mobile AD spending in all four markets. More specifically, by seeing the change in width of alluviums of the mobile section, UK will increase its mobile Ad spending most in Video Advertising market; China will increase its mobile Ad spending most in Social Media Advertising market; US will increase its mobile Ad spending most in Video Advertising market. 
 
 In conclusion, the weight of ad spending will gradually shift towards the mobile side, which is in line with our expectations. We believe that with the rapid development of mobile Internet, more and more Internet users can be exposed to mobile advertising, so mobile advertising will dominate digital advertising. 
 
 ### Research Question 2:
+
+Now, we will analysis the ad spending in different countries and in different markets. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 df5 <- df[df$Chart=="Ad Spending"&df$Name=="Total",]
@@ -112,7 +121,7 @@ ggplot(df5,aes(x=Year, y=Value,fill=fct_reorder(Region,Value,.desc=FALSE)))+
   labs(fill="Country",y="Ad Spending in million USD")
 ```
 
-Firstly, we'd like to get a general idea of how much advertising is spent in different markets in the three countries. As you can see from the boxplots, overall Ad spending is increasing in all three countries, regardless of markets. However, in different markets, the differences between the three countries are various. For Classifields, China has consistently been the highest spender of the three countries and will continue to grow at a faster rate than the US and UK in terms of projected value (2022-2026). In Search and Video Advertising market, the United States has been far ahead of the other two countries in terms of Ad spending, twice as much as the next largest country, China. In Social Media Advertising market, the US is also the leader, with China following at an even faster pace. In addition, The United Kingdom has consistently lagged far behind the other countries in five markets. 
+Firstly, we'd like to get a general idea of how much advertising is spent in different markets in the three countries. As you can see from the boxplots, overall Ad spending is increasing in all three countries, regardless of markets. However, the differences between the three countries vary in five markets. For Classifields, China has consistently been the highest spender of the three countries and will continue to grow at a faster rate than the US and UK in terms of projected value (2022-2026). In Search and Video Advertising market, the United States has been far ahead of the other two countries in terms of Ad spending, twice as much as the next largest country, China. In Social Media Advertising market, the US is also the leader, with China following at an even faster pace. In addition, The United Kingdom has consistently lagged far behind the other countries in five markets. 
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -151,10 +160,9 @@ ggplot(df4, aes(Year,Market))+
 
 ```
 
-We calculated the return on investment ratio (revenue divided by spending) based on available data on AD spending versus revenue from 2017 to 2020. Since returns are globally aggregated, we assume that these three countries account for 50% of worldwide revenue (the accuracy of this ratio does not affect the observation of change in return ratio). 
+We calculated the return on investment ratio (revenue divided by spending) based on available data on AD spending versus revenue(only available in Video, Social Media, and Search Advertising markets) from 2017 to 2020. Since returns are globally aggregated, we assume that these three countries account for 50% of worldwide revenue (the accuracy of this ratio does not affect the observation of change in return ratio). 
 
-According to the heatmap, we find that the return ratio of Video and social media advertising decreases year by year, and the color change degree of social media advertising is more obvious, so the rate of return of social media decreases faster, while the return ratio of search advertising increases year by year. This finding is so interesting that we further take a closer look at advertising spending growth rate for each market over the years. 
-
+According to the heatmap, we find that the return ratio of Video and Social Media Advertising decreases year by year, and the rate of return of social media decreases faster given the more pronounced degree of color change for Social Media Advertising, while the return ratio of Search Advertising increases year by year. This finding is so interesting that we further take a closer look at advertising spending growth rate and spending per internet user for each market over the years.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(highcharter)
@@ -250,9 +258,10 @@ c <- c %>%
 
 c
 ```
-China: 
-The overall trend of Ad Spending per Internet User across all market is increasing by projection. Social Media Advertising has the largest projected growth rate, while search advertising does not have a large projected growth rate. Though, search advertising has the largest ad spending per internet user for now, it seems that market will focus on Social Media Advertising and Banner Advertising in the future.
-The overall trend for Ad spending growth across all markets is a year-over-year decline, with a plateau starting in 2023. Ultimately, Video and Social Media Advertising will have similar and higher growth rates than another three advertisings', and the other three markets will have almost similar growth rates. In addition, we also notice that the ad spending growth Video, Classifields and Search Advertising have an obvious increase from 2020 to 2021, among which search advertising has the highest proportion of increase.
+
+China: \
+The overall trend of Ad Spending per Internet User across all market is increasing by projection. Social Media Advertising has the largest projected growth rate, while search advertising does not have a large projected growth rate. Though, search advertising has the largest ad spending per internet user for now, it seems that market will focus on Social Media Advertising and Banner Advertising in the future.\
+The overall trend for Ad spending growth across all markets is a year-over-year decline, with a plateau starting in 2023. Ultimately, Video and Social Media Advertising will have similar and higher growth rates than that of another three advertising markets, and the other three markets will have almost similar growth rates. In addition, we also notice that the ad spending growth Video, Classifields and Search Advertising have an obvious increase from 2020 to 2021, among which search advertising has the highest proportion of increase.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 total.avg.us <- total.avg %>% filter(Region=="United States") %>% select(Year, Market, Average)
@@ -299,10 +308,9 @@ s <- s %>%
 s
 ```
 
-US: 
-The overall trend of Ad Spending per Internet User across all market is increasing by projection except for Classified. Other Advertising has similar projected growth rate, but Banner Advertising has a smaller projected growth rate on Ad Spending. It is clear that US market is still focusing on Search Advertising.
+US: \
+The overall trend of Ad Spending per Internet User across all market is increasing by projection except for Classified. Other Advertising has similar projected growth rate, but Banner Advertising has a smaller projected growth rate on Ad Spending. It is clear that US market is still focusing on Search Advertising.\
 The overall trend for Ad spending growth across all markets is a year-over-year decline, with a flattening out starting in 2024. Finally, the growth rates of Video, Search, and Social Media Advertising are similar and higher than that of the other two, followed by Banner and then Classified, which will maintain the lowest growth rate. In addition, Video, Classifields and Search have an obvious increase from 2020 to 2021, among which search has the highest proportion of increase.
-
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 total.avg.uk <- total.avg %>% filter(Region=="United Kingdom") %>% select(Year, Market, Average)
@@ -349,19 +357,21 @@ k <- k %>%
 k
 ```
 
-UK: 
-The overall trend of Ad Spending per Internet User across all market is increasing by projection. Search and Social Media Advertising has larger projected growth rate. It is clear that UK market is still focusing on Search Advertising.
+UK:\
+The overall trend of Ad Spending per Internet User across all market is increasing by projection. Search and Social Media Advertising has larger projected growth rate. It is clear that UK market is still focusing on Search Advertising.\
 The overall trend for Ad spending growth across all markets is a year-over-year decline, with a plateau starting in 2023. Finally, the growth rates of Video, Search, and Social Media Advertising are similar and higher than that of the other two, followed by Banner and then Classified, which will maintain the lowest growth rate. In addition, we also find that all markets have a significant increase from 2020 to 2021, among which search has the highest proportion of increase.
 
-Comparison between the above three line plots for each country:
-1. All three countries experienced declines in Ad spending growth for all markets in 2018-2020, followed by a rebound in some or all markets in 2021, with the UK showing the largest increase. 
-2. From the prediction of the future growth, growth in all five markets stabilizes around 2023 for all three countries. Among them, Video, Search and Social Media Advertising in developed countries (the United Kingdom and the United States) are stable at 7-9%. However, only Video and Social Media Advertising maintain an increased rate of around 10% in China, a developing country. We speculate the reason behind it is that China has a large proportion of the population and advertising is still in the stage of development, so the growth rate could be higher. In addition, the low spending growth of Search Advertising might be due to the lack of a relatively perfect Search engine in China and the limitation of usage of Google in the country.
-3. Based on the heatmap for the return ratio, the sharp and continuous declination of the return ratio for Social Media Advertising can possibly be a reason which explains the growth rate of social media advertising spending is decreasing year by year for all three countries except for the slight increase from 2019 to 2021 in the UK.
-4. Based on the heatmap for the return ratio, only the return ratio of Search Advertising kept increasing from 2017 to 2020. The increased return ratio might indicate the reason why Search Advertising has the highest increase in Ad spending growth in 2021 among the three countries.
-5. Based on the slope graph, US and UK have a similar situation. They spend mostly on Search Advertising, and then Social Media and Banner Advertising. China, on the other hand, spends a lot on  Social Media advertising and is decreasing its spenting on Search Advertising.
+**Comparison between the above three line plots for each country:**\
+1. All three countries experienced rapid declines in Ad spending growth for all markets in 2018-2020, followed by a rebound in some or all markets in 2021, with the UK showing the largest increase.\
+2. From the prediction of the future growth, growths in all five markets stabilize around 2023 for all three countries. Among them, Video, Search and Social Media Advertising in developed countries (the United Kingdom and the United States) are stable at 7-9%. However, only Video and Social Media Advertising maintain an increased rate of around 10% in China, a developing country. We speculate the reason behind it is that China has a large proportion of the population and advertising is still in the stage of development, so the growth rate could be higher. In addition, the low spending growth of Search Advertising might be due to the lack of a relatively perfect Search engine in China and the limitation of usage of Google in the country.\
+3. Based on the heatmap for the return ratio, the sharp and continuous declination of the return ratio for Social Media Advertising can possibly be a reason which explains the growth rate of social media advertising spending is decreasing year by year for all three countries except for the minimal increase from 2019 to 2021 in the UK.\
+4. Based on the heatmap for the return ratio, only the return ratio of Search Advertising kept increasing from 2017 to 2020. The increased return ratio might indicate the reason why Search Advertising has the highest increase in Ad spending growth in 2021 among all three countries.\
+5. Based on the slope graph, the US and the UK have a similar situation. They spend mostly on Search Advertising per Internet user, and then Social Media and Banner Advertising per Internet user. China, on the other hand, spends a lot on Social Media advertising and is decreasing its spending on Search Advertising per Internet user.\
+6. The US and the UK is expected to see the largest growth in Search Advertising spending per Internet user, which can be well proved by the consistently rise in return ratio for Search Advertising market. Still, China will increase most in the Social Media Advertising spending per Internet user instead of Search Advertising. The reasons behind it might be the low development and limitation of search engines as we mentioned before. We also understand that the return ratio is calculated using global advertising revenue, which might not well represent each country's situation and we'd like to further explore the difference between China and other two countries in social media market. 
 
 ### Social Media Advertising
-In Next Section, we will dig into the Social Media Advertising. As an interactive digital channel that facilitate the creation and sharing of information, ideas, and interests, social media had over 3.6 billion users in 2020 worldwide. Obviously, digital advertising will focus on social media market. China, US and UK have spent a total of 110062.6 million USD on Social Media Advertising 2021 alone. And in those countries, this spending is continuously increasing. 
+
+As an interactive digital channel that facilitate the creation and sharing of information, ideas, and interests, social media had over 3.6 billion users in 2020 worldwide. Obviously, digital advertising will focus on social media market. China, US and UK have spent a total of 110,062.6 million USD on Social Media Advertising 2021 alone. And in those countries, this spending is continuously increasing. 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 china <- read_csv("china.csv") %>% select(c(2:8))
@@ -417,14 +427,12 @@ users %>%
 
 
 Next, we take a brief look at the Ad spending in Social Media market by Year and Country. Clearly, three countries increase their spending year by year. Compared to US and China, UK spend relatively smaller amoun of money in Ad spending in Social Media Market. 
-```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE, results = 'asis', comment = NA}
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 ad.spending <- rbind(china,us,uk) %>% filter(Market == "Social Media Advertising", Chart == "Ad Spending", Name == "Total") %>% select(1,6,7)
-p <- nPlot(Value ~ Year, 
-            group = 'Region', 
-            data = ad.spending, 
-            type = 'multiBarChart'
-)
-p$print('Plot1', cdn =TRUE, include_assets=TRUE)
+ggplot(ad.spending, aes(x = Year, y = Value, fill = Region)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Social Media Advertising")
 ```
 
 We will dig deeper in the next section.

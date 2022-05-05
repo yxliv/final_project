@@ -15,9 +15,9 @@ In this project, we are intended to make a comparison among UK, US and China on 
 
 We proposed three research questions and hope to find the answers through the data visualization process.
 
-1. How does the proportion of different advertising market in the three countries differ from 2017-2026? How does the present data and projected data differ in three countries? How does users age, gender, income affect the proportion? 
+1. How does the average ad spending different among markets? How does it divided between desktop and mobile in three countries?
 
-2. Compare the average ad spending per Internet user from 2017 to 2021 and the projected average ad spending per Internet user from 2022 to 2026 in different advertising markets in three countries, which segment will the market spending most in and why may be the reason behind?
+2. An analysis the ad spending in different countries and in different markets. Which market has the highest return on investment ratio? Compare the average ad spending per Internet user as well as the ad spending growth rate from 2017 to 2021 and the projected ones from 2022 to 2026 in different advertising markets in three countries, which segment will the market spending most in and why may be the reason behind?
 
 3. Focusing on social media advertising market, how does popular social network differ in three countries and how does social network users change from 2017 to 2026?
 

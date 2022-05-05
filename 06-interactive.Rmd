@@ -165,9 +165,11 @@ tab_style(
   my_theme()
 ```
 
-From the table, we could see that China has the largest number of social media users and the Uk has the least. The huge difference could be led by the population difference. Since "Total" here is the sum of all social network users, there is repeated calculation. We decide to use the distinct counting of total reach (from the dataset) and calculate the ratio of average users and population.
+From the table, we could see that China has the largest number of social media users and the UK has the least. The huge difference could be led by the population difference. "Total" in the above table is the sum of all social network users, which includes repeated calculation. Thus, we decide to use the distinct counting of total reach (from the dataset) and calculate the user ratio: 
+$Average\space Users = \frac{\sum_{year=2017}^{year=2026} Total\space Users\space }{10}$ \
+$User\space Ratio = \frac{Average\space Users}{Population}$ 
 
-|Region  |Average Users |Ratio
+|Region  |Average Users |User Ratio
 |:------ |:------       |:------
 |China   |1016.2646     |0.706
 |US      |295.7239      |0.893
@@ -175,7 +177,7 @@ From the table, we could see that China has the largest number of social media u
 
 Now it is clear that the US has the largest number of users and China have the least when taking population into account.
 
-From the Reach by Network table, the popular social media platforms vary from country to country. Especially in China, the top 5 social networks are different from those in US and UK. We believe that the reason behind this is the blockage of several social media in China. The only 2 social networks not banned in US and UK top 5 are LinkedIn and TikTok. The top 5 social networks in China are all Chinese companies.
+From the Reach by Network table, the popular social media platforms vary from country to country. Especially in China, the top 5 social networks are different from those in the US and the UK. We believe that the reason behind this is the blockage of several social media in China. The only 2 social networks not banned in the US and the UK top 5 are LinkedIn and TikTok. The top 5 social networks in China are all Chinese companies.
 
 Another thing worth noting is that, though people in different countries are using different social media, the ratio of each social network user and total users are similar for the same ranking. For example, the ratio of the most popular social network is around 25% in the three countries.
 

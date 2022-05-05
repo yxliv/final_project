@@ -1,2 +1,38 @@
 # Conclusion
 
+**Main takeaways of our exploration:** 
+
+1. Search and Banner Advertising Market are currently the majority of digital advertising spending; It is predicted that the investment in Social Media Advertising will increase, surpassing Banner, and the lowest advertising spending in Video will also increase. Eventually, except for Video Advertising, the proportion of the remaining three major markets will become relatively balanced, while Search Advertising market will always be in the leading position.
+
+2. Whether we look at the overall change of mobile advertising spending in each market or the adjustment of mobile advertising investment in each country, we can see the general increasing trend in the development of mobile advertising, which will account for over 3/4 of the total market. 
+
+3. In terms of return ratio, the Video and Social Media Advertising have declined year over year, while Search Advertising have increased year over year. 
+
+4. With the rapid update of technology and the continuous development of digital advertising, from the beginning of the rise of digital advertising, the high growth rate of advertising gradually declined from 2017 with a brief rally in 2021, and finally the growth rate of all advertising markets will be stable year by year according to the forecast. 
+
+5. The US and UK are expected to see the largest increase in Ad Spending per Internet user in Search Advertising, while China is expected to see the largest increase in Ad Spending per user in the Social Media market.
+
+6. In terms of demographics, the UK and the US are similar. The age distribution of Internet users in the United States and the United Kingdom is relatively even, while the proportion of older Internet users in the 55-64 age range in China is significantly lower than in the other two countries. Meanwhile, the proportion of male users in China is larger than that of the other two countries. By income levels, the users' distribution are relatively average across all three countries, but more specifically, China has more medium income users; US has more low income users; and UK has more high income users.
+
+7. The components of social media network in the US and the UK are very different from China. Due to the blockage of some social media popular in the UK and the US, China has more unique and different social media platforms. Nevertheless, the ratio of each social network user over total users are similar for different countries.
+
+8. US has the largest ratio of average users over 10 years and China have the least when taking population into account.
+
+
+**Limitations:**
+
+1. The top company revenues are globally collected, so we are not able to access the revenues for each country and calculate the return ratio for each country, which can help us better understand the difference between countries in advertising spending on five markets. 
+
+2. The information contained in the dataset provided by Statista is not enough to provide us with very strong evidence that China chooses to spend more money on Social Media Advertising. Some of the data may not be accurate. For example, Wechat is a national social media platform in China, just like mobile phone SMS.. There are more than 1.1 billion monthly active users in China, accounting for more than 75% of the total population, while the data of Statista shows only about 25%, which makes us doubt the accuracy and rate of coverage of the data.
+
+**Future direction:**
+
+1. In the future, more research objects can be selected to systematically compare the differences in advertising spending and revenues between developed and developing countries, or to study the differences between European, North American and Asian countries.
+
+2. Rather than collecting data from single source, we will collect data from multiple sources to have a more comprehensive and detailed analysis of digital advertising markets.
+
+**Lessons learned:**
+
+1. By this project of discovering the advertising on digital market in three countries over 10 years, we have a better sense of how to access the research question from different perspectives and by different statistical graphics. In this project, we utilized time series line plots, grouped bar charts, heatmaps, donut charts, alluvial diagrams, and slope plots (some of them also incorporate with interactive designs.) to explore the topics from different dimensions and we learnt how to present the dataset more effectively by appropriately drawing those plots.
+
+2. In the process of drawing graphs, we become more familiar with how to filter and process datasets by using shortcuts of dplyr to achieve the data format required by the charts.

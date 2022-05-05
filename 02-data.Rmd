@@ -20,25 +20,32 @@ head(us.original)
 
 Each dataset has 16 columns: Region, Market, Chart, Name, Unit, Source and Years (2017-2026). The first five columns are filled with character data, and Years columns are filled with values which are all numeric data.
 
-##### Region
+**Region**
+
 It is a column filled with region. Each dataset has one region, so it does not help much when we research in one country. But it will be helpful when we combine datasets to do the comparison. 
 
-##### Market
+**Market**
+
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 unique(china.orginal$Market)
 ```
-There are six factors inside this column, but we only have five markets inside "Digital Advertising": "Banner", "Social Media", "Search", "Classifieds", and "Video". 
 
-##### Chart
+There are six factors inside this column, with the whole market "Digital Advertising", and five markets inside it: "Banner", "Social Media", "Search", "Classifieds", and "Video". 
+
+**Chart**
+
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 unique(china.orginal$Chart)
 ```
+
 This column contains different charts we would use for further analysis. Mainly, we would look at Ad Spending, Users, and Reach by Social Network charts.
 
-##### Name
+**Name**
+
 This column contains different Names of Charts. We will not present them here because the dataset has not been transformed to tidy version.
 
-##### Unit, Source, Year
+**Unit, Source, Year**
+
 Those columns are obvious, so we will not talk about them in detail here.
 
 ***

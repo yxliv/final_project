@@ -192,19 +192,14 @@
 ## # … with 5 more variables: `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;,
 ## #   `2025` &lt;dbl&gt;, `2026` &lt;dbl&gt;</code></pre>
 <p>Each dataset has 16 columns: Region, Market, Chart, Name, Unit, Source and Years (2017-2026). The first five columns are filled with character data, and Years columns are filled with values which are all numeric data.</p>
-<div id="region" class="section level5 hasAnchor" number="2.0.0.0.1">
-<h5><span class="header-section-number">2.0.0.0.1</span> Region<a href="data-sources.html#region" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><strong>Region</strong></p>
 <p>It is a column filled with region. Each dataset has one region, so it does not help much when we research in one country. But it will be helpful when we combine datasets to do the comparison.</p>
-</div>
-<div id="market" class="section level5 hasAnchor" number="2.0.0.0.2">
-<h5><span class="header-section-number">2.0.0.0.2</span> Market<a href="data-sources.html#market" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><strong>Market</strong></p>
 <pre><code>## [1] &quot;Banner Advertising&quot;       &quot;Social Media Advertising&quot;
 ## [3] &quot;Digital Advertising&quot;      &quot;Search Advertising&quot;      
 ## [5] &quot;Classifieds&quot;              &quot;Video Advertising&quot;</code></pre>
-<p>There are six factors inside this column, but we only have five markets inside “Digital Advertising”: “Banner”, “Social Media”, “Search”, “Classifieds”, and “Video”.</p>
-</div>
-<div id="chart" class="section level5 hasAnchor" number="2.0.0.0.3">
-<h5><span class="header-section-number">2.0.0.0.3</span> Chart<a href="data-sources.html#chart" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>There are six factors inside this column, with the whole market “Digital Advertising”, and five markets inside it: “Banner”, “Social Media”, “Search”, “Classifieds”, and “Video”.</p>
+<p><strong>Chart</strong></p>
 <pre><code>##  [1] &quot;Ad Spending&quot;                                     
 ##  [2] &quot;Ad Spending Growth&quot;                              
 ##  [3] &quot;Average Ad Spending per Internet User&quot;           
@@ -226,18 +221,13 @@
 ## [19] &quot;Ad Spending Change&quot;                              
 ## [20] &quot;Share from Digital&quot;</code></pre>
 <p>This column contains different charts we would use for further analysis. Mainly, we would look at Ad Spending, Users, and Reach by Social Network charts.</p>
-</div>
-<div id="name" class="section level5 hasAnchor" number="2.0.0.0.4">
-<h5><span class="header-section-number">2.0.0.0.4</span> Name<a href="data-sources.html#name" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><strong>Name</strong></p>
 <p>This column contains different Names of Charts. We will not present them here because the dataset has not been transformed to tidy version.</p>
-</div>
-<div id="unit-source-year" class="section level5 hasAnchor" number="2.0.0.0.5">
-<h5><span class="header-section-number">2.0.0.0.5</span> Unit, Source, Year<a href="data-sources.html#unit-source-year" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><strong>Unit, Source, Year</strong></p>
 <p>Those columns are obvious, so we will not talk about them in detail here.</p>
 <hr />
 <p>Briefly, we noticed that this dataset is not in tidy format and have several NAs. We will clean the dataset in the next sections.</p>
 
-</div>
 </div>
             </section>
 
@@ -299,6 +289,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

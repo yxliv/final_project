@@ -259,6 +259,8 @@ c <- c %>%
 c
 ```
 
+(If you move your mouse over the points in the plot, you will see the growth rate for each market in one year)
+
 China: \
 The overall trend of Ad Spending per Internet User across all market is increasing by projection. Social Media Advertising has the largest projected growth rate, while search advertising does not have a large projected growth rate. Though, search advertising has the largest ad spending per internet user for now, it seems that market will focus on Social Media Advertising and Banner Advertising in the future.\
 The overall trend for Ad spending growth across all markets is a year-over-year decline, with a plateau starting in 2023. Ultimately, Video and Social Media Advertising will have similar and higher growth rates than that of another three advertising markets, and the other three markets will have almost similar growth rates. In addition, we also notice that the ad spending growth Video, Classifields and Search Advertising have an obvious increase from 2020 to 2021, among which search advertising has the highest proportion of increase.
@@ -432,7 +434,7 @@ Next, we take a brief look at the Ad spending in Social Media market by Year and
 ad.spending <- rbind(china,us,uk) %>% filter(Market == "Social Media Advertising", Chart == "Ad Spending", Name == "Total") %>% select(1,6,7)
 ggplot(ad.spending, aes(x = Year, y = Value, fill = Region)) + 
   geom_bar(stat = "identity") +
-  labs(title = "Social Media Advertising")
+  labs(title = "Social Media Advertising", x = "Ad Spending (million USD)")
 ```
 
 We will dig deeper in the next section.

@@ -40,7 +40,7 @@ users <- rbind(china.users, us.users, uk.users) %>% pivot_wider(names_from = Reg
 ad.spending <- rbind(china,us,uk) %>% filter(Market == "Social Media Advertising", Chart == "Ad Spending", Name == "Total") %>% select(1,6,7)
 ```
 
-In order to understand the benefits of Social Media Advertising, it is important to understand the mechanics of social media networks. We decide to look into the social network reach in China, US and UK in this section. Social network reach refers to the number of users who have come across a particular content on a social platform.
+In order to understand the benefits of Social Media Advertising, it is important to understand the mechanics of social media networks. We decide to look into the social network reach in China, the US and the UK in this section. Social network reach refers to the number of users who have come across a particular content on a social platform.
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, error = FALSE}
 china.reach <- china %>% 
@@ -247,6 +247,9 @@ r1 <- reactable(
 ```{r echo = FALSE}
 r1
 ```
+
+(If you move your mouse over the points in the plot, you will see the corresponding value)
+
 Now we will dig into each country. In China, the most frequent social network is WeChat from Tencent which is the only instant messaging app in the top 7. We can see that the growth rate of Wechat users is stable. Qzone, on the other hand, has a continuously negative growth rate. The users are decreasing since 2019 and are projected to be continuously decreasing in the future. Qzone is also the product of Tencent and is earlier than WeChat. Unlike WeChat, Qzone is a pure social networking platform where users could write blogs on it. However, this feature alone is not attractive enough to keep users. Another worth noting point is that LinkedIn is projected to have a dramatic decrease in users from 2021 to 2022. LinkedIn China announced that it would shut down the localized version of LinkedIn and launch a new InJobs App focusing on helping China-based professionals find jobs in China in 2021. And this announcement and action lead to a dramatic decrease in users.
 
 
@@ -374,10 +377,10 @@ r3 <- reactable(
 r3
 ```
 
-UK and US have a similar situation on the social network. Facebook has the most users and keeps a stable growth rate. Pinterest, though ranking six in both countries, has a decreasing growth rate in the US but a stable growth rate in the UK. Twitter has had a very unstable growth rate in recent years in the US. But the data provider Statista has a positive view of Twitter's user growth rate in the future. The user growth rate of Tumblr is worth noting. Similar to Qzone in China, Tumblr faced a massive drop in users from 2018 to 2019 and continues to drop till now in both countries. In December of 2018, Tumblr announced a new ban on “adult content", and this action resulted in a dramatic drop in users.
+The UK and the US have a similar situation on the social network. Facebook has the most users and keeps a stable growth rate. Pinterest, though ranking six in both countries, has a decreasing growth rate in the the US but a stable growth rate in the UK. Twitter has had a very unstable growth rate in recent years in the US. But the data provider Statista has a positive view of Twitter's user growth rate in the future. The user growth rate of Tumblr is worth noting. Similar to Qzone in China, Tumblr faced a massive drop in users from 2018 to 2019 and continues to drop till now in both countries. In December of 2018, Tumblr announced a new ban on “adult content", and this action resulted in a dramatic drop in users.
 
 **Conclusion**\
-Billions of people around the world use social media to share information and make connections, and thus the social media advertising market is becoming stronger. The Social Network market in China is very different from US and UK. And it might lead to the reason why China is spending mostly on social media advertising but US and UK are not.
+Billions of people around the world use social media to share information and make connections, and thus the social media advertising market is becoming stronger. The Social Network market in China is very different from the US and the UK. And it might lead to the reason why China is spending mostly on social media advertising but the US and the UK are not.
 
 
 

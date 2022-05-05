@@ -434,7 +434,7 @@ Next, we take a brief look at the Ad spending in Social Media market by Year and
 ad.spending <- rbind(china,us,uk) %>% filter(Market == "Social Media Advertising", Chart == "Ad Spending", Name == "Total") %>% select(1,6,7)
 ggplot(ad.spending, aes(x = Year, y = Value, fill = Region)) + 
   geom_bar(stat = "identity") +
-  labs(title = "Social Media Advertising", x = "Ad Spending (million USD)")
+  labs(title = "Social Media Advertising", y = "Ad Spending (million USD)")
 ```
 
 We will dig deeper in the next section.
